@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "a7d95f43-c452-409e-81a9-00d8931d6775",
+		"name": "api--patient",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17710409"
+	},
+	"item": [
+		{
+			"name": "patient/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Joana Dark\",\r\n  \"birth_date\": \"22/02/1990\",\r\n  \"email\": \"joana.dark@email.com\",\r\n  \"phone\": \"2133448866\",\r\n  \"gender\": \"female\",\r\n  \"address\": {\r\n        \"zipcode\": \"12345\",\r\n        \"address\": \"123 Main St\",\r\n        \"neighborhood\": \"Central\",\r\n        \"city\": \"Springfield\",\r\n        \"state\": \"IL\",\r\n        \"number\": \"10\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/patient/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"patient",
+						"create"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:5000/customers \\\r\n-H \"Content-Type: application/json\" \\\r\n-d '{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"age\": 30\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/patient/list",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"page\": 1,\r\n    \"per_page\": 5,\r\n    \"name\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/patient/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"patient",
+						"list"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:5000/customers\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/patient/1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": {\r\n        \"address\": \"123 Main St\",\r\n        \"city\": \"California\",\r\n        \"neighborhood\": \"Central\",\r\n        \"number\": \"10\",\r\n        \"state\": \"IL\",\r\n        \"zipcode\": \"12345\"\r\n    },\r\n    \"birth_date\": \"22/02/2000\",\r\n    \"email\": \"maria.dork@email.com\",\r\n    \"name\": \"Maria Dork\",\r\n    \"phone\": \"2133448866\",\r\n    \"gender\": \"feminino\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/patient/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"patient",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X PUT http://localhost:5000/customers/1 \\\r\n-H \"Content-Type: application/json\" \\\r\n-d '{\r\n  \"name\": \"John Smith\",\r\n  \"email\": \"john.smith@example.com\",\r\n  \"age\": 31\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/patient/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/patient/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"patient",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X DELETE http://localhost:5000/customers/1\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/patient/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/patient/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"patient",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X DELETE http://localhost:5000/customers/1\r\n"
+			},
+			"response": []
+		}
+	]
+}

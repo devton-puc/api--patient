@@ -1,0 +1,31 @@
+services:
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      - MYSQL_DATABASE=medical-consulting
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - api-backend
+
+volumes:
+  my-db:
+
+networks:
+  api-backend:
+    name: api-backend
+    driver: bridge
+   
