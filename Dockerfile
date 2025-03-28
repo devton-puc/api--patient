@@ -1,7 +1,4 @@
-FROM python:3.11
-
-
-ENV FLASK_ENV=production
+FROM python:3.11-slim AS builder
 
 WORKDIR /app
 
@@ -9,6 +6,20 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN pip install setuptools wheel
+
+RUN python setup.py bdist_wheel
+
+FROM python:3.11-slim AS final
+
+RUN pip install gunicorn
+
+COPY --from=builder /app/dist/*.whl /dist/
+
+RUN pip install /dist/*.whl
+
+WORKDIR /app
+
 EXPOSE 5000
 
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
