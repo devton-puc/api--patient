@@ -5,7 +5,6 @@ from pydantic import BaseModel, EmailStr, ConfigDict
 from app.schemas.address import AddressSchema
 
 
-# Schema para criação/atualizacao de um novo paciente
 class PatientSaveSchema(BaseModel):
     """
     Define os Dados do Paciente para Criação/Alteração
@@ -20,7 +19,6 @@ class PatientSaveSchema(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# Schema para exibir os dados de um paciente
 class PatientViewSchema(BaseModel):
     """
     Define os Dados do Paciente para visualização
