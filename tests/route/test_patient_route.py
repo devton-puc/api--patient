@@ -93,8 +93,6 @@ class TestPatientRoute:
             response = client.get("/patient/personal-id/12345678900")
             assert response.status_code == 500
 
-    #--------------------------------------
-
     def test_should_return_http200_create_patient_when_success(self, client):
         with patch("app.usecase.patient_usecase.PatientUseCase.create_patient", mock_create_patient_success()):
             new_patient = {
