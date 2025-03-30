@@ -133,15 +133,37 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/patient/1",
+					"raw": "http://localhost:3000/patient/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"patient",
 						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X DELETE http://localhost:5000/customers/1\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/patient/personal-id/12345678900",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/patient/personal-id/12345678900",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"patient",
+						"personal-id",
+						"12345678900"
 					]
 				},
 				"description": "Generated from cURL: curl -X DELETE http://localhost:5000/customers/1\r\n"

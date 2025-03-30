@@ -2,7 +2,7 @@ from flask import jsonify
 from app.logs.logger import logger
 from app.route import patient_tag
 from app.schemas import PatientSaveSchema, PatientViewSchema
-from app.schemas.patient import ListPatientViewSchema, IdPatientPathSchema
+from app.schemas.patient import ListPatientViewSchema, IdPatientPathSchema, PersonalIdPathSchema
 from app.schemas.filter import PatientFilterSchema
 from app.schemas.status import StatusResponseSchema
 from app.usecase.patient_usecase import PatientUseCase
@@ -45,6 +45,24 @@ class PatientRoute:
             response = self.usecase.get_patient(path.id_patient)
             if isinstance(response, PatientViewSchema):
                 logger.debug(f"Buscando o paciente id:[{path.id_patient}]: Dados retornados")
+                return jsonify(response.model_dump()), 200
+            else:
+                logger.debug(
+                    f"Buscando o paciente: status code [{response.code}] - mensagem: [{response.model_dump()}]")
+                return jsonify(response.model_dump()), response.code
+
+        @app.get('/patient/personal-id/<string:personal_id>', tags=[patient_tag],
+                 responses={
+                     200: PatientViewSchema,
+                     404: StatusResponseSchema,
+                     500: StatusResponseSchema
+                 })
+        def get_patient_personal_id_route(path: PersonalIdPathSchema):
+            """Busca um paciente pelo CPF."""
+            logger.debug(f"Buscando o paciente de cpf: [{path.personal_id}]")
+            response = self.usecase.get_patient_personal_id(path.personal_id)
+            if isinstance(response, PatientViewSchema):
+                logger.debug(f"Buscando o paciente CPF:[{path.personal_id}]: Dados retornados")
                 return jsonify(response.model_dump()), 200
             else:
                 logger.debug(

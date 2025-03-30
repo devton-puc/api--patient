@@ -428,7 +428,7 @@ class TestPatientUseCase:
         assert response.message == "Erro ao excluir o paciente"       
 
     @patch("app.usecase.patient_usecase.SessionLocal")
-    def test_should_return_patient_when_found(self, session_mock, setup_usecase):
+    def test_should_return_patient_when_success(self, session_mock, setup_usecase):
 
         mock_address = MagicMock(spec=Address)
         mock_address.to_view_schema.return_value = {
@@ -489,6 +489,75 @@ class TestPatientUseCase:
         mock_session.get.return_value = mock_patient
 
         response = setup_usecase.get_patient(1)
+
+        assert isinstance(response, StatusResponseSchema)
+        assert response.code == 500
+        assert response.message == 'Erro ao obter o paciente'
+
+#-------------------------------------------------------------------------
+
+    @patch("app.usecase.patient_usecase.SessionLocal")
+    def test_should_return_patient_personal_id_when_success(self, session_mock, setup_usecase):
+
+        mock_address = MagicMock(spec=Address)
+        mock_address.to_view_schema.return_value = {
+            'zipcode': '12345-678',
+            'address': 'Rua da Esperança',
+            'neighborhood': 'Centro',
+            'city': 'Rio de Janeiro',
+            'state': 'RJ',
+            'number': '123'
+        }
+
+        mock_patient = MagicMock(spec=Patient)
+        mock_patient.to_view_schema.return_value = {
+            'id': 1,
+            'name': 'John Doe',
+            'personal_id': '12345678922',
+            'email': 'johndoe@example.com',
+            'phone': '999999999',
+            'gender': 'Male',
+            'birth_date': '1990-01-01',
+            'address': mock_address.to_view_schema()
+        }
+
+        mock_session = session_mock.return_value
+        mock_session.query.return_value.filter.return_value.first.return_value = mock_patient
+
+        response = setup_usecase.get_patient_personal_id("12345678900")
+
+        assert isinstance(response, PatientViewSchema)
+        assert response.id == 1
+        assert response.name == 'John Doe'
+        assert response.personal_id == "12345678922"
+        assert response.address.zipcode == '12345-678'
+
+    @patch("app.usecase.patient_usecase.SessionLocal")
+    def test_should_return_patient_personal_id_when_not_found(self, session_mock, setup_usecase):
+
+        mock_session = session_mock.return_value
+        mock_session.query.return_value.filter.return_value.first.return_value = mock_patient = None
+
+        response = setup_usecase.get_patient_personal_id("12345678900")
+
+        assert isinstance(response, StatusResponseSchema)
+        assert response.code == 404
+        assert response.message == 'paciente não encontrado.'
+
+    @patch("app.usecase.patient_usecase.SessionLocal")
+    def test_should_return_patient_personal_id_when_error(self, session_mock, setup_usecase):
+
+        mock_patient = MagicMock(spec=Patient)
+        mock_patient.to_view_schema.return_value = {
+            'id': 1,
+            'name': 'John Doe',
+            'email': 'johndoe@example.com',
+        }
+
+        mock_session = session_mock.return_value
+        mock_session.query.filter.first.return_value = mock_patient
+
+        response = setup_usecase.get_patient_personal_id("12345678900")
 
         assert isinstance(response, StatusResponseSchema)
         assert response.code == 500

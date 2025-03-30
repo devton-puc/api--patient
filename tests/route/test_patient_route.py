@@ -77,6 +77,24 @@ class TestPatientRoute:
             response = client.get("/patient/1")
             assert response.status_code == 500
 
+    def test_should_return_http200_get_patient_personal_id_when_success(self, client):
+        with patch("app.usecase.patient_usecase.PatientUseCase.get_patient_personal_id", mock_get_patient_success()):
+            response = client.get("/patient/personal-id/12345678900")
+            assert response.status_code == 200
+            assert 'id' in response.json
+
+    def test_should_return_http404_get_patient_personal_id_when_not_found(self, client):
+        with patch("app.usecase.patient_usecase.PatientUseCase.get_patient_personal_id", mock_get_patient_failure_404()):
+            response = client.get("/patient/personal-id/12345678900")
+            assert response.status_code == 404
+
+    def test_should_return_http500_get_patient_personal_id_when_error(self, client):
+        with patch("app.usecase.patient_usecase.PatientUseCase.get_patient_personal_id", mock_get_patient_failure_500()):
+            response = client.get("/patient/personal-id/12345678900")
+            assert response.status_code == 500
+
+    #--------------------------------------
+
     def test_should_return_http200_create_patient_when_success(self, client):
         with patch("app.usecase.patient_usecase.PatientUseCase.create_patient", mock_create_patient_success()):
             new_patient = {

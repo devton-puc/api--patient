@@ -55,3 +55,12 @@ class IdPatientPathSchema(BaseModel):
     id_patient: int
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class PersonalIdPathSchema(BaseModel):
+    """
+    Define objeto de busca
+    """
+    personal_id: str
+
+    model_config = ConfigDict(from_attributes=True)

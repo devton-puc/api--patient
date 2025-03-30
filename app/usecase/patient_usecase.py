@@ -131,12 +131,24 @@ class PatientUseCase:
 
             session = SessionLocal()
             patient = session.get(Patient, id)
-            print(f'passou {patient}')
             if not patient:
                 return StatusResponseSchema(code=404, message="paciente não encontrado.")
             return PatientViewSchema(**patient.to_view_schema())
 
         except Exception as error:
             return StatusResponseSchema(code=500, message="Erro ao obter o paciente", details=f"{error}")
+
+    def get_patient_personal_id(self, personal_id: str) -> PatientViewSchema | StatusResponseSchema:
+
+        try:
+            session = SessionLocal()
+            patient = session.query(Patient).filter(Patient.personal_id == personal_id).first()
+            if not patient:
+                return StatusResponseSchema(code=404, message="paciente não encontrado.")
+            return PatientViewSchema(**patient.to_view_schema())
+
+        except Exception as error:
+            return StatusResponseSchema(code=500, message="Erro ao obter o paciente", details=f"{error}")
+
 
 
