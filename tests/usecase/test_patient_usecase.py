@@ -31,6 +31,7 @@ class TestPatientUseCase:
         mock_patient_1.to_view_schema.return_value = {
             'id': 1,
             'name': 'John Doe',
+            'personal_id': '12345678900',
             'email': 'johndoe@example.com',
             'phone': '999999999',
             'gender': 'Male',
@@ -42,6 +43,7 @@ class TestPatientUseCase:
         mock_patient_2.to_view_schema.return_value = {
             'id': 2,
             'name': 'Jane Smith',
+            'personal_id': '12345678922',
             'email': 'janesmith@example.com',
             'phone': '888888888',
             'gender': 'Female',
@@ -101,6 +103,7 @@ class TestPatientUseCase:
         mock_patient_1.to_view_schema.return_value = {
             'id': 1,
             'name': 'John Doe',
+            'personal_id': '12345678900',
             'email': 'johndoe@example.com',
             'phone': '999999999'
         }
@@ -137,6 +140,7 @@ class TestPatientUseCase:
 
         mock_patient = MagicMock(spec=Patient)
         mock_patient.name = "John Doe"
+        mock_patient.personal_id = "12345678900"
         mock_patient.email = "johndoe@example.com"
         mock_patient.phone = "999999999"
         mock_patient.gender = "Male"
@@ -149,6 +153,7 @@ class TestPatientUseCase:
 
         patient_data = MagicMock()
         patient_data.name = "John Doe"
+        patient_data.personal_id = "12345678900"
         patient_data.email = "johndoe@example.com"
         patient_data.phone = "999999999"
         patient_data.gender = "Male"
@@ -183,6 +188,7 @@ class TestPatientUseCase:
 
         mock_patient = MagicMock(spec=Patient)
         mock_patient.name = "John Doe"
+        mock_patient.personal_id = "12345678900"
         mock_patient.email = "johndoe@example.com"
         mock_patient.phone = "999999999"
         mock_patient.gender = "Male"
@@ -195,6 +201,7 @@ class TestPatientUseCase:
 
         patient_data = MagicMock()
         patient_data.name = "John Doe"
+        patient_data.personal_id = "12345678900"
         patient_data.email = "johndoe@example.com"
         patient_data.phone = "999999999"
         patient_data.gender = "Male"
@@ -226,6 +233,7 @@ class TestPatientUseCase:
 
         mock_patient = MagicMock(spec=Patient)
         mock_patient.name = "John Doe"
+        mock_patient.personal_id = "12345678900"
         mock_patient.email = "johndoe@example.com"
         mock_patient.phone = "999999999"
         mock_patient.gender = "Male"
@@ -238,6 +246,7 @@ class TestPatientUseCase:
 
         patient_data = MagicMock()
         patient_data.name = "John Doe"
+        patient_data.personal_id = "12345678900"
         patient_data.email = "johndoe@example.com"
         patient_data.phone = "999999999"
         patient_data.gender = "Male"
@@ -273,6 +282,7 @@ class TestPatientUseCase:
 
         mock_patient = MagicMock(spec=Patient)
         mock_patient.name = "John Doe"
+        mock_patient.personal_id = "12345678900"
         mock_patient.email = "johndoe@example.com"
         mock_patient.phone = "999999999"
         mock_patient.gender = "Male"
@@ -285,6 +295,7 @@ class TestPatientUseCase:
 
         patient_data = MagicMock()
         patient_data.name = "Jane Doe"
+        patient_data.personal_id = "12345678922"
         patient_data.email = "janedoe@example.com"
         patient_data.phone = "888888888"
         patient_data.gender = "Female"
@@ -314,6 +325,7 @@ class TestPatientUseCase:
 
         patient_data = MagicMock()
         patient_data.name = "Jane Doe"
+        patient_data.personal_id = "12345678922"
         patient_data.email = "janedoe@example.com"
         patient_data.phone = "888888888"
         patient_data.gender = "Female"
@@ -337,6 +349,7 @@ class TestPatientUseCase:
 
         mock_patient = MagicMock(spec=Patient)
         mock_patient.name = "John Doe"
+        mock_patient.personal_id = "12345678900"
         mock_patient.email = "johndoe@example.com"
         mock_patient.phone = "999999999"
 
@@ -346,6 +359,7 @@ class TestPatientUseCase:
 
         patient_data = MagicMock()
         patient_data.name = "Jane Doe"
+        patient_data.personal_id = "12345678922"
         patient_data.address.address = "Rua Atualizada"
         patient_data.address.neighborhood = "Centro Atualizado"
         patient_data.address.city = "São Paulo"
@@ -430,6 +444,7 @@ class TestPatientUseCase:
         mock_patient.to_view_schema.return_value = {
             'id': 1,
             'name': 'John Doe',
+            'personal_id': '12345678922',
             'email': 'johndoe@example.com',
             'phone': '999999999',
             'gender': 'Male',
@@ -445,6 +460,7 @@ class TestPatientUseCase:
         assert isinstance(response, PatientViewSchema)
         assert response.id == 1
         assert response.name == 'John Doe'
+        assert response.personal_id == "12345678922"
         assert response.address.zipcode == '12345-678'
 
     @patch("app.usecase.patient_usecase.SessionLocal")

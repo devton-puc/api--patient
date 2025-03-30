@@ -39,6 +39,7 @@ class PatientUseCase:
 
             new_patient = Patient(
                 name=patient_data.name,
+                personal_id=patient_data.personal_id,
                 email=patient_data.email,
                 phone=patient_data.phone,
                 gender=patient_data.gender,
@@ -79,6 +80,8 @@ class PatientUseCase:
 
             if patient_data.name:
                 patient.name = patient_data.name
+            if patient_data.personal_id:
+                patient.personal_id = patient_data.personal_id
             if patient_data.email:
                 patient.email = patient_data.email
             if patient_data.phone:

@@ -10,6 +10,7 @@ class PatientSaveSchema(BaseModel):
     Define os Dados do Paciente para Criação/Alteração
     """
     name: str
+    personal_id: str
     email: EmailStr
     phone: str
     gender: str
@@ -25,6 +26,7 @@ class PatientViewSchema(BaseModel):
     """
     id: int
     name: str
+    personal_id: str
     email: EmailStr
     phone: str
     gender: str

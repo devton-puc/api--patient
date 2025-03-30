@@ -81,10 +81,11 @@ class TestPatientRoute:
         with patch("app.usecase.patient_usecase.PatientUseCase.create_patient", mock_create_patient_success()):
             new_patient = {
                 "name": "Joana Dark",
-                "birth_date": "22/02/1990",
+                "personal_id": "12345678922",                
                 "email": "joana.dark@email.com",
                 "phone": "2133448866",
                 "gender": "female",
+                "birth_date": "22/02/1990", 
                 "address": {
                     "zipcode": "12345",
                     "address": "123 Main St",
@@ -101,10 +102,11 @@ class TestPatientRoute:
         with patch("app.usecase.patient_usecase.PatientUseCase.create_patient", mock_create_patient_failure_500()):
             new_patient = {
                 "name": "Joana Dark",
-                "birth_date": "22/02/1990",
+                "personal_id": "12345678922",                
                 "email": "joana.dark@email.com",
                 "phone": "2133448866",
                 "gender": "female",
+                "birth_date": "22/02/1990",  
                 "address": {
                     "zipcode": "12345",
                     "address": "123 Main St",
@@ -120,11 +122,12 @@ class TestPatientRoute:
     def test_should_return_http404_update_patient_when_not_found(self, client):
         with patch("app.usecase.patient_usecase.PatientUseCase.update_patient", mock_update_patient_failure_404()):
             updated_patient = {
-                "name": "updated_name",
-                "email": "updated@example.com",
-                "phone": "updated_phone",
-                "gender": "string",
-                "birth_date": "22/02/2000",
+                "name": "Joana Gomes",
+                "personal_id": "12345678911",                
+                "email": "joana.gomes@email.com",
+                "phone": "2199448866",
+                "gender": "female",
+                "birth_date": "22/02/1970", 
                 "address": {
                     "address": "updated_address",
                     "city": "updated_city",
@@ -140,10 +143,11 @@ class TestPatientRoute:
     def test_should_return_http500_update_patient_when_error(self, client):
         with patch("app.usecase.patient_usecase.PatientUseCase.update_patient", mock_update_patient_failure_500()):
             updated_patient = {
-                "name": "updated_name",
-                "email": "updated@example.com",
-                "phone": "updated_phone",
-                "gender": "string",
+                "name": "Joana Gomes",
+                "personal_id": "12345678911",                
+                "email": "joana.gomes@email.com",
+                "phone": "2199448866",
+                "gender": "female",
                 "birth_date": "22/02/2000",
                 "address": {
                     "address": "updated_address",
