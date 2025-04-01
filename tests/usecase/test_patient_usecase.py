@@ -494,7 +494,6 @@ class TestPatientUseCase:
         assert response.code == 500
         assert response.message == 'Erro ao obter o paciente'
 
-#-------------------------------------------------------------------------
 
     @patch("app.usecase.patient_usecase.SessionLocal")
     def test_should_return_patient_personal_id_when_success(self, session_mock, setup_usecase):
