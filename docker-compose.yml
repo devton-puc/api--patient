@@ -19,13 +19,13 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - api-backend
+      - medical-network
 
 volumes:
   my-db:
 
 networks:
-  api-backend:
-    name: api-backend
+  medical-network:
+    name: medical-network
     driver: bridge
    
