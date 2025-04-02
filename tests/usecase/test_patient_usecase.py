@@ -144,7 +144,7 @@ class TestPatientUseCase:
         mock_patient.email = "johndoe@example.com"
         mock_patient.phone = "999999999"
         mock_patient.gender = "Male"
-        mock_patient.birth_date = "01/01/2000"
+        mock_patient.birth_date = "2000-04-07"
         mock_patient.address = mock_address
 
         mock_session = session_mock.return_value
@@ -157,7 +157,7 @@ class TestPatientUseCase:
         patient_data.email = "johndoe@example.com"
         patient_data.phone = "999999999"
         patient_data.gender = "Male"
-        patient_data.birth_date = "01/01/2000"
+        patient_data.birth_date = "2000-04-07"
         patient_data.address = MagicMock()
         patient_data.address.zipcode = "12345-678"
         patient_data.address.address = "Rua da Esperança"
@@ -237,7 +237,7 @@ class TestPatientUseCase:
         mock_patient.email = "johndoe@example.com"
         mock_patient.phone = "999999999"
         mock_patient.gender = "Male"
-        mock_patient.birth_date = "01/01/2000"
+        mock_patient.birth_date = "2000-11-07"
         mock_patient.address = mock_address
 
         mock_session = session_mock.return_value
@@ -250,7 +250,7 @@ class TestPatientUseCase:
         patient_data.email = "johndoe@example.com"
         patient_data.phone = "999999999"
         patient_data.gender = "Male"
-        patient_data.birth_date = "01/01/2000"
+        patient_data.birth_date = "2000-10-07"
         patient_data.address = MagicMock()
         patient_data.address.zipcode = "12345-678"
         patient_data.address.address = "Rua da Esperança"
@@ -286,7 +286,7 @@ class TestPatientUseCase:
         mock_patient.email = "johndoe@example.com"
         mock_patient.phone = "999999999"
         mock_patient.gender = "Male"
-        mock_patient.birth_date = "02/02/1992"
+        mock_patient.birth_date = "2000-04-07"
         mock_patient.address = mock_address
 
         mock_session = session_mock.return_value
@@ -299,7 +299,7 @@ class TestPatientUseCase:
         patient_data.email = "janedoe@example.com"
         patient_data.phone = "888888888"
         patient_data.gender = "Female"
-        patient_data.birth_date = "02/02/1992"
+        patient_data.birth_date = "2000-04-07"
         patient_data.address = MagicMock()
         patient_data.address.zipcode = "12345-678"
         patient_data.address.address = "Rua Atualizada"
@@ -329,7 +329,7 @@ class TestPatientUseCase:
         patient_data.email = "janedoe@example.com"
         patient_data.phone = "888888888"
         patient_data.gender = "Female"
-        patient_data.birth_date = "02/02/1992"
+        patient_data.birth_date = "2000-04-07"
         patient_data.address = MagicMock()
         patient_data.address.zipcode = "12345-678"
         patient_data.address.address = "Rua Atualizada"
