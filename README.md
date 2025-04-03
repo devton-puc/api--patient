@@ -4,6 +4,21 @@ Projeto MVP para disciplina **Desenvolvimento Backend Avançado**
 
 Este projeto é uma aplicação back-end desenvolvida com Python Utilizando Flask. O objetivo é criar um serviço para interagir com front-end permitindo adicionar, editar, excluir e visualizar informações dos pacientes.
 
+### Modelo de Arquitetura:
+
+1. **Camada de Frontend (React)**:
+   - Aplicação `react web--medical-consulting` é responsável por interagir com os e fazer a integração com a API.
+
+2. **Camada de BFF (Backend For Frontend)**:
+   - A API `bff--medical-consulting` utiliza arquitetura bff (backend for front end), processando as solicitações e coordenando as interações entre a aplicação e os serviços backend.
+
+3. **O BFF se conecta as seguintes apis**:
+   - `api--patient`: Gerencia os dados dos pacientes (ex.: informações de cadastro, histórico médico).
+   - `api--appointment`: Lida com agendamentos e consulta a serviços externos.
+   - `viacep (externa)`: Serviço externo para obter endereços com base nos CEPs fornecidos.
+
+4. **Integração com Serviço Externo**:
+   - A API `api--appointment` conecta-se à `API do Google Gemini`, que retorna os medicamentos recomendados com base nos sintomas.
 
 ## Funcionalidades
 
