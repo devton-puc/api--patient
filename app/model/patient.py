@@ -10,9 +10,9 @@ class Patient(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
     personal_id = Column(String(15), nullable=False)
-    email = Column(String(100), nullable=False, unique=True)
-    phone = Column(String(10))
-    gender = Column(String(20))
+    email = Column(String(150), nullable=False, unique=True)
+    phone = Column(String(12))
+    gender = Column(String(30))
     birth_date = Column(Date, nullable=False)
     address = relationship("Address", uselist=False, back_populates="patient", cascade="all, delete-orphan")
 
